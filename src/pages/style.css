@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Ranchers&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
+
+body {
+    overflow: hidden;
+    
+}
+.button {
+    border: transparent;
+    background-color: #232C3F;
+    padding: 7px;
+    width: 120px;
+    border-radius: 20px;
+    color: white;
+    cursor: pointer;
+    font-family: 'Caveat', cursive;
+}
+.button:hover {
+    border: transparent;
+    background-color: white;
+    padding: 7px;
+    width: 120px;
+    border-radius: 20px;
+    color: black;
+    cursor: pointer;
+    font-family: 'Caveat', cursive;
+}
+
+.link {
+    font-family: 'Caveat', cursive;
+    color: white;
+    text-decoration: none;
+    list-style-type: none;
+    border-bottom: 4px solid transparent;
+    padding: 10;
+}
+
+
+.link:hover {
+    color: white;    
+    text-decoration: none;
+    list-style-type: none;
+    border-bottom: 4px solid white;
+    padding: 10;
+}
+.linkActive {
+    color: white;    
+    text-decoration: none;
+    list-style-type: none;
+    border-bottom: 4px solid white;
+    padding: 10;
+}
+
+.contentTagline {
+    font-family: 'Caveat', cursive;
+    font-size: 30px;
+    color: lightgray;
+}
+
+.contentTitle {
+    font-family: 'Caveat', cursive;
+    font-size: 70px;
+    color: 'black';
+    text-shadow: rgba(255, 255, 255, 0.59) 5px 5px;
+}
