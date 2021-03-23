@@ -47,19 +47,18 @@ const IndexPage = ({data}) => {
   const [background, setBackground] = React.useState(null)
   const [logo, setLogo] = React.useState(null)
   const [active, setActive] = React.useState(null)
-  console.log(data)
 
   React.useEffect(() => {
-    data.allSanityPageSetting.edges.map(image =>{
-      console.log(image)
-      if(image.node.configurePage[0]._type === 'backgroundImage') {
+    data.allSanityPageSetting.edges.map(image => {
+      if(image.node.configurePage.length === 0) {
+        return null
+      }else if(image.node.configurePage[0]._type === 'backgroundImage') {
         setBackground(image.node.configurePage[0])
       }else {
-        setLogo(image.node.configurePage[0].mainImage.asset.url)
+        setLogo(image.node.configurePage[0])
       }
     })
 
-   console.log(window.location.pathname)
    if(window.location.pathname === '/') {
       setActive('home')
    }else if(window.location.pathname === '/blog') {
@@ -72,12 +71,13 @@ const IndexPage = ({data}) => {
   };
 
   return(
-    <body>
-      {background && <div style={{backgroundImage: `url(${background.mainImage.asset.url})`, overflow: 'hidden', backgroundSize: 'cover', height: '100vh', objectFit: 'cover', backgroundRepeat: 'no-repeat'}}>
+    <div>
+      {background &&
+      <div style={background.mainImage === null || background.mainImage.asset === null ? null :{backgroundImage: `url(${background.mainImage.asset.url})`, overflow: 'hidden', backgroundSize: 'cover', height: '100vh', objectFit: 'cover', backgroundRepeat: 'no-repeat'}}>
             <div>
               <div style={{display: 'flex', justifyContent: 'space-between', background: 'linear-gradient(black, transparent)', padding: 7, alignItems: 'center'}}>
                 <div style={{marginLeft: 25, padding: 10}}>              
-                  {logo && <img src={logo} height='50' />}
+                  {logo.mainImage === null || logo.mainImage.asset === null ? null : <img src={logo.mainImage.asset.url} height='50' />}
                 </div>
                 <div>
                   <ul style={{display: 'flex', justifyContent:'space-evenly', width: 400, listStyleType: 'none', marginRight: 15}}>
@@ -95,7 +95,7 @@ const IndexPage = ({data}) => {
               </div>
             </div>
         </div>}
-    </body>
+    </div>
   )
 }
 

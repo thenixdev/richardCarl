@@ -47,19 +47,18 @@ const Book = ({data}) => {
   const [background, setBackground] = React.useState(null)
   const [logo, setLogo] = React.useState(null)
   const [active, setActive] = React.useState(null)
-  console.log(data)
 
   React.useEffect(() => {
     data.allSanityPageSetting.edges.map(image =>{
-      console.log(image)
-      if(image.node.configurePage[0]._type === 'backgroundImage') {
-        setBackground(image.node.configurePage[0])
-      }else {
-        setLogo(image.node.configurePage[0].mainImage.asset.url)
-      }
+        if(image.node.configurePage.length === 0) {
+            return null
+          }else if(image.node.configurePage[0]._type === 'backgroundImage') {
+            setBackground(image.node.configurePage[0])
+        }else {
+            setLogo(image.node.configurePage[0].mainImage.asset.url)
+        }
     })
 
-   console.log(window.location.pathname)
     if(window.location.pathname === '/') {
       setActive('home')
     }else if(window.location.pathname === '/blog') {
